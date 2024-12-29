@@ -1,4 +1,4 @@
-package org.example.parkinglot.entities;
+package com.example.parkinglot.entities;
 
 import jakarta.persistence.*;
 
@@ -46,11 +46,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @OneToMany(mappedBy = "owner")
     private Collection<Car> cars;
+    @OneToMany(mappedBy = "owner")
+
 
     public Collection<Car> getCars() {
+
         return cars;
     }
 

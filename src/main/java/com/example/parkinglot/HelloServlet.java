@@ -1,4 +1,4 @@
-package org.example.parkinglot;
+package com.example.parkinglot;
 
 import java.io.*;
 import jakarta.servlet.http.*;

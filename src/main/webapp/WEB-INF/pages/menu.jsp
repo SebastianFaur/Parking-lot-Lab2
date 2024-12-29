@@ -29,6 +29,12 @@
                  aria-current="page" href="${pageContext.request.contextPath}/Cars">Cars</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link"
+            ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf(
+                    "/")) eq '/Users' ? ' active' : ''}
+               aria-current="page" href="${pageContext.request.contextPath}/Users">Users</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>

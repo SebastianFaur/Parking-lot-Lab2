@@ -7,8 +7,8 @@
       <jta-data-source>jdbc/ParkingLotResource</jta-data-source>
 
 
-      <class>org.example.parkinglot.entities.User</class>
-      <class>org.example.parkinglot.entities.Car</class>
+      <class>com.example.parkinglot.entities.User</class>
+      <class>com.example.parkinglot.entities.Car</class>
 
       <properties>
 
