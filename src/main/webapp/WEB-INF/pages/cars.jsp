@@ -4,9 +4,17 @@
 <t:pageTemplate pageTitle="Cars">
 
     <h1>Cars</h1>
+    <form method="POST" action="${pageContext.request.contextPath}/Cars">
+    <a href="${pageContext.request.contextPath}/AddCar" class="btn btn-primary btn-lg ">Add Car</a>
+        <button class="btn btn-danger" type="submit">Delete Cars</button>
+
+        Car</a>
     <div class="container text-center">
         <c:forEach var="car" items="${cars}">
         <div class="row">
+            <div class="col">
+                <input type="checkbox" name="car_ids" value="${car.id}"/>
+            </div>
             <div class="col">
                 ${car.licensePlate}
             </div>
@@ -16,7 +24,11 @@
             <div class="col">
                 ${car.ownerName}
             </div>
+            <div class="col">
+                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">EditCar</a>
+            </div>
         </div>
+
 
     <div class="row">
         <div class="col">
@@ -31,6 +43,7 @@
     </div>
         </c:forEach>
     </div>
+    </form>
 
     <h5>Free parking spots: ${numberOfFreeParkingSpots}</h5>
 
