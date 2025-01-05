@@ -1,6 +1,7 @@
 package com.example.parkinglot;
 
 import com.example.parkinglot.common.UserDto;
+import com.example.parkinglot.ejb.PasswordBean;
 import com.example.parkinglot.ejb.UserBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
@@ -10,10 +11,18 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+@ServletSecurity(
+        value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
+        httpMethodConstraints = {
+                @HttpMethodConstraint(value = "POST", rolesAllowed = {"WRITE_USERS"})
+        }
+)
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
     @Inject
     private UserBean userBean;
+
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

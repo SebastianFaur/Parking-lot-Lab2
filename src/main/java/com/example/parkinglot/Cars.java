@@ -2,6 +2,7 @@ package com.example.parkinglot;
 
 import com.example.parkinglot.common.CarDto;
 import com.example.parkinglot.ejb.CarsBean;
+import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Cars", value = "/Cars")
+@DeclareRoles({"READ_CARS", "WRITE_CARS"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_CARS"}),
+        httpMethodConstraints = {@HttpMethodConstraint(value = "POST",
+                rolesAllowed = {"WRITE_CARS"})})
+
 public class Cars extends HttpServlet {
     @Inject
      CarsBean carsBean;
